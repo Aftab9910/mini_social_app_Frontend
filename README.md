@@ -1,16 +1,194 @@
-# React + Vite
+# MiniSocial Frontend 🎨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend application for **MiniSocial**, a simple social media web app where users can login, create posts, like posts, and comment on posts.
 
-Currently, two official plugins are available:
+Built using **React.js, Material UI, Axios, Context API, Framer Motion**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Features ✨
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* User Login 🔐
+* Create Post (text + image URL) 📝📸
+* View Feed 📰
+* Like Posts ❤️
+* Comment on Posts 💬
+* Profile Page 👤
+* Dark Mode 🌙
+* Responsive UI 📱
+* Smooth Animations ⚡
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack 🛠
+
+* React.js (Hooks)
+* Material UI (MUI)
+* Axios
+* Context API
+* Framer Motion
+* React Router DOM
+
+---
+
+## Project Structure 📁
+
+```id="dpl3sk"
+frontend
+│
+├── src
+│   ├── api
+│   │   └── axios.js
+│   │
+│   ├── components
+│   │   ├── CreatePost.jsx
+│   │   ├── PostCard.jsx
+│   │   ├── CommentBox.jsx
+│   │   └── Navbar.jsx
+│   │
+│   ├── context
+│   │   └── AuthContext.jsx
+│   │
+│   ├── pages
+│   │   ├── Login.jsx
+│   │   ├── Feed.jsx
+│   │   └── Profile.jsx
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── package.json
+└── README.md
+```
+
+---
+
+## Installation ⚙️
+
+### 1. Clone repository
+
+```id="4s1e9v"
+git clone https://github.com/yourusername/minisocial-frontend.git
+
+cd minisocial-frontend
+```
+
+### 2. Install dependencies
+
+```id="8gxf1r"
+npm install
+```
+
+---
+
+## Environment Setup 🔧
+
+Update API base URL:
+
+📁 src/api/axios.js
+
+```id="v8tntv"
+import axios from "axios";
+
+export default axios.create({
+
+ baseURL: "https://your-backend-url.onrender.com/api/v1"
+
+});
+```
+
+---
+
+## Run Project ▶️
+
+```id="7hhx2g"
+npm run dev
+```
+
+App runs on:
+
+```id="if8gtv"
+http://localhost:5173
+```
+
+---
+
+## Pages 📄
+
+### Login Page
+
+User enters email and password to login.
+
+---
+
+### Feed Page
+
+* View all posts
+* Like posts
+* Comment on posts
+
+---
+
+### Profile Page
+
+* Shows logged-in user's posts
+* Displays post count
+
+---
+
+## API Integration 🔗
+
+Backend API endpoints used:
+
+| Method | Endpoint           | Description   |
+| ------ | ------------------ | ------------- |
+| POST   | /auth/login        | Login user    |
+| POST   | /posts             | Create post   |
+| GET    | /posts             | Get all posts |
+| PUT    | /posts/:id/like    | Like post     |
+| PUT    | /posts/:id/comment | Add comment   |
+
+---
+
+## Example Post JSON 📦
+
+```id="fm1z48"
+{
+ "text": "Goa trip",
+ "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+}
+```
+
+---
+
+## Deployment 🌍
+
+Frontend deployed on:
+
+Vercel / Netlify
+
+Example:
+
+https://minisocial.vercel.app
+
+---
+
+## Author 👨‍💻
+
+Aftab Ansari
+
+MCA Student
+Frontend + Backend Developer
+
+Skills:
+React.js
+Node.js
+MongoDB
+Express.js
+REST API
+
+---
+
+## License 📄
+
+MIT License
