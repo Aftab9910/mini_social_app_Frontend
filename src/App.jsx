@@ -31,15 +31,22 @@ function App() {
 
         <BrowserRouter>
           <Routes>
+            {/* login page */}
             <Route path="/" element={<Login />} />
 
+            {/* signup page */}
             <Route path="/signup" element={<Signup />} />
 
+            {/* extra route so /register also works */}
+            <Route path="/register" element={<Signup />} />
+
+            {/* feed */}
             <Route
               path="/feed"
               element={<Feed darkMode={darkMode} setDarkMode={setDarkMode} />}
             />
 
+            {/* profile */}
             <Route
               path="/profile"
               element={
