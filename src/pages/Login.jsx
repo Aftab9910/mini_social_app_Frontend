@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom"; // add this
+import { Link } from "react-router-dom";
 
 import axios from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
@@ -18,21 +18,39 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState("");
+
   const submit = async () => {
-    const res = await axios.post("/auth/login", { email, password });
+    try {
+      const res = await axios.post("/auth/login", {
+        email,
+        password,
+      });
 
-    login(res.data);
+      login(res.data);
 
-    localStorage.setItem("userId", res.data.user._id);
-    localStorage.setItem("username", res.data.user.username);
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userId", res.data.user._id);
+      localStorage.setItem("username", res.data.user.username);
 
-    window.location = "/feed";
+      window.location = "/feed";
+    } catch (err) {
+      console.log(err);
+
+      setError("User not found or password incorrect ❌");
+    }
   };
 
   return (
     <Card sx={{ maxWidth: 400, m: "100px auto" }}>
       <CardContent>
         <Typography variant="h5">Login</Typography>
+
+        {error && (
+          <Typography color="error" sx={{ mt: 1 }}>
+            {error}
+          </Typography>
+        )}
 
         <TextField
           fullWidth
@@ -56,7 +74,7 @@ export default function Login() {
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           Don't have an account?{" "}
           <Link to="/signup" style={{ textDecoration: "none", color: "blue" }}>
-            Register
+            Signup
           </Link>
         </Typography>
       </CardContent>

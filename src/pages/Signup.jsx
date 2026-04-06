@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // add this
+import { Link } from "react-router-dom";
 
 import axios from "../api/axios";
 
@@ -19,9 +19,23 @@ export default function Signup() {
   const [password, setPassword] = useState("");
 
   const submit = async () => {
-    await axios.post("/auth/signup", { username, email, password });
+    try {
+      const res = await axios.post("/auth/signup", {
+        username,
+        email,
+        password,
+      });
 
-    window.location = "/";
+      console.log(res.data);
+
+      alert("Signup successful ✅");
+
+      window.location = "/";
+    } catch (err) {
+      console.log(err);
+
+      alert("Signup failed ❌");
+    }
   };
 
   return (
@@ -57,7 +71,13 @@ export default function Signup() {
 
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           Already have an account?{" "}
-          <Link to="/" style={{ textDecoration: "none", color: "blue" }}>
+          <Link
+            to="/"
+            style={{
+              textDecoration: "none",
+              color: "blue",
+            }}
+          >
             Login
           </Link>
         </Typography>
