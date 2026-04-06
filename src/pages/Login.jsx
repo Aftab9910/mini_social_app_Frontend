@@ -55,10 +55,7 @@ export default function Login() {
 
         <Typography variant="body2" align="center" sx={{ mt: 2 }}>
           Don't have an account?{" "}
-          <Link
-            to="/register"
-            style={{ textDecoration: "none", color: "blue" }}
-          >
+          <Link to="/signup" style={{ textDecoration: "none", color: "blue" }}>
             Register
           </Link>
         </Typography>

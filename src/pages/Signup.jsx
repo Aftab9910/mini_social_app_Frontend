@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; // add this
 
 import axios from "../api/axios";
 
@@ -53,6 +54,13 @@ export default function Signup() {
         <Button fullWidth variant="contained" onClick={submit}>
           Signup
         </Button>
+
+        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+          Already have an account?{" "}
+          <Link to="/" style={{ textDecoration: "none", color: "blue" }}>
+            Login
+          </Link>
+        </Typography>
       </CardContent>
     </Card>
   );
