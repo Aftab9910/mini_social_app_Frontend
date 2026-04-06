@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
+import { Link } from "react-router-dom"; // add this
 
 import axios from "../api/axios";
-
 import { AuthContext } from "../context/AuthContext";
 
 import {
@@ -16,7 +16,6 @@ export default function Login() {
   const { login } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
 
   const submit = async () => {
@@ -24,9 +23,7 @@ export default function Login() {
 
     login(res.data);
 
-    // important for profile page
     localStorage.setItem("userId", res.data.user._id);
-
     localStorage.setItem("username", res.data.user.username);
 
     window.location = "/feed";
@@ -55,6 +52,16 @@ export default function Login() {
         <Button fullWidth variant="contained" onClick={submit}>
           Login
         </Button>
+
+        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            style={{ textDecoration: "none", color: "blue" }}
+          >
+            Register
+          </Link>
+        </Typography>
       </CardContent>
     </Card>
   );
